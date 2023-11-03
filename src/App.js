@@ -27,7 +27,7 @@ function App() {
   const location = useLocation();
   // const selectedImageIndex = location?.state?.selectedImageIndex || 0;
   const selectedImageIndex = localStorage.getItem('selectedImageIndex') || 0;
-  // const selectedCardId = location?.state?.selectedCardId
+
 
   return (
 
