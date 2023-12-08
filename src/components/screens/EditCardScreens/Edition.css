@@ -479,3 +479,18 @@
   justify-content: center;
   gap: 20px;
 }
+
+
+.day_line{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.hhhh{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: absolute;
+  margin-left: 200px;
+}
