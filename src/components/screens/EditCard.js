@@ -19,7 +19,10 @@ const EditCard = ({handleHideEditCard, id_card}) => {
         setEditedCard(currentState);
 
         if (event.target.type === 'file') {
-          setImageFile(event.target.files[0]);
+
+          const selectedFile = event.target.files[0];
+          setImageFile(selectedFile);
+          console.log(selectedFile)
         }
        
     };
@@ -27,7 +30,7 @@ const EditCard = ({handleHideEditCard, id_card}) => {
     const handleEditSubmit = async (event) => {
         try {
             const formData = new FormData();
-            formData.append('image', imageFile);
+            formData.append('photo', imageFile);
             await patch('cards/'+id_card, editedCard, formData);
             toast.success("Vos données ont été enregistrées")
 

@@ -96,7 +96,9 @@ const Settings = () => {
 
 
       formData.append("fullname", userData.fullname);
-      formData.append("image", userData.image);
+      if(userData.image){
+        formData.append("image", userData.image);
+      }
   
       const response = await axios.patch('http://localhost:5000/api/users/user/' + id_user, { fullname: userData.fullname, image: userData.image }, { headers: { 'Content-Type': 'multipart/form-data' } }, formData);
   

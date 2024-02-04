@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Navbar.css"
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useRef } from 'react'
 import logo from "../../Assets/SmartCard_Light.png"
 import { Link } from 'react-scroll';
 import { useNavigate } from 'react-router-dom';
+import CmdModal from './CmdModal';
 
 const Navbar = () => {
+
+  const [openCmd, setOpenCmd] = useState(false)
+
+  const openModal = () => {
+    setOpenCmd(true)
+  }
+
+  const closeModal = () => {
+    setOpenCmd(false)
+  }
 
   const navigate = useNavigate();
   const navToLogin = () => {
@@ -50,6 +61,10 @@ const Navbar = () => {
                 <button className='wb-login-btn' onClick={navToLogin}>
                   Se connecter
                 </button>
+                <button className='wb-login-btn' onClick={openModal}>
+                  Acheter ma carte
+                </button>
+                {openCmd && <CmdModal closeModal={closeModal} />}
             <button
               className="wb-nav-btn"
               onClick={showNavbar}>

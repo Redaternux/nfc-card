@@ -58,7 +58,7 @@ const EditCardHeader = ({editedCard,handleEditInputChange,handleEditSubmit, id_c
             </button>
         </div>
 
-        {activeComponent === "BasicDetails" && <BasicDetails handleHideEditCard={handleHideEditCard} editedCard={editedCard} handleEditInputChange={handleEditInputChange} handleEditSubmit={handleEditSubmit}/>}
+        {activeComponent === "BasicDetails" && <BasicDetails id_card={id_card} handleHideEditCard={handleHideEditCard} editedCard={editedCard} handleEditInputChange={handleEditInputChange} handleEditSubmit={handleEditSubmit}/>}
         {activeComponent === "Templates" && <Templates handleHideEditCard={handleHideEditCard} id_card={id_card}  editedCard={editedCard} handleEditInputChange={handleEditInputChange} handleEditSubmit={handleEditSubmit} />}
         {activeComponent === "SocialLinks" && <SocialLinks handleHideEditCard={handleHideEditCard} editedCard={editedCard} handleEditInputChange={handleEditInputChange} handleEditSubmit={handleEditSubmit} />}    
         {activeComponent === "Services" && <Services id_card={id_card} handleHideEditCard={handleHideEditCard} editedCard={editedCard} handleEditInputChange={handleEditInputChange} handleEditSubmit={handleEditSubmit} />} 

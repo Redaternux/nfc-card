@@ -77,11 +77,11 @@ exports.findAll = async (req, res) => {
 
 exports.updateOne =async  (req, res) => {
   const naissance = new Date().toISOString().slice(0, 10);
-  const photo = req.file || ""
+  const photo = req.file
 
   const data=req.body
-  const query = 'UPDATE user_card SET `full_name`=?, `email`=?, `phone_number`=?, `fonction`=?, `societe`=?, `website`=?, `theme`=?, `youtube`=?, `linkedin`=?, `instagram`=?, `adresse`=?, `naissance`=?, `twitter`=?, `reddit`=?, `whatsapp`=?, `pinterrest`=?, `tiktok`=?, `card_name`=?, `status`=?, `facebook`=? where id=?'
-  const values = [data.full_name, data.email, data.phone_number,data.fonction, data.societe, data.website, data.theme, data.youtube, data.linkedin, data.instagram, data.adresse, naissance, data.twitter, data.reddit, data.whatsapp, data.pinterrest, data.tiktok, data.card_name, data.status, data.facebook,req.params.id_card];
+  const query = 'UPDATE user_card SET `full_name`=?, `email`=?, `phone_number`=?, `fonction`=?, `societe`=?, `website`=?, `theme`=?, `photo`=?, `youtube`=?, `linkedin`=?, `instagram`=?, `adresse`=?, `naissance`=?, `twitter`=?, `reddit`=?, `whatsapp`=?, `pinterrest`=?, `tiktok`=?, `card_name`=?, `status`=?, `facebook`=? where id=?'
+  const values = [data.full_name, data.email, data.phone_number,data.fonction, data.societe, data.website, data.theme, data.photo, data.youtube, data.linkedin, data.instagram, data.adresse, naissance, data.twitter, data.reddit, data.whatsapp, data.pinterrest, data.tiktok, data.card_name, data.status, data.facebook, req.params.id_card];
   
   
   const search_query = mysql.format(query,values)
