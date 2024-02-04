@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import { post } from '../../../http/api';
 
 
 
@@ -39,8 +40,9 @@ const CmdModal = ({closeModal}) => {
             insertData.append('phone_number', formData.phone_number);
             insertData.append('name', formData.quantity);
 
-            await axios.post('http://localhost:5000/api/user_cmd', insertData);
+            await post('user_cmd', insertData);
             toast.success("Merci pour votre commande")
+            console.log(insertData)
           } catch (error) {
             console.log(error);
           }
