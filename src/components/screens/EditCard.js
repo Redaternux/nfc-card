@@ -10,27 +10,43 @@ const EditCard = ({handleHideEditCard, id_card}) => {
 
     const [editedCard, setEditedCard] = useState({})
     const [imageFile, setImageFile] = useState(null);
+    const [file, setFile] = useState('')
 
-    const handleEditInputChange = (event) => {
-        console.log(event.target.value)
-        const currentState = { ...editedCard };
+    // const handleEditInputChange = (event) => {
+    //     console.log(event.target.value)
+    //     const currentState = { ...editedCard };
 
-        currentState[event.target.name] = event.target.value;
-        setEditedCard(currentState);
+    //     currentState[event.target.name] = event.target.value;
+    //     setEditedCard(currentState);
 
-        if (event.target.type === 'file') {
+    //     if (event.target.type === 'file') {
 
-          const selectedFile = event.target.files[0];
-          setImageFile(selectedFile);
-          console.log(selectedFile)
-        }
+    //       const selectedFile = event.target.files[0];
+    //       setImageFile(selectedFile);
+    //       console.log(selectedFile)
+    //     }
        
+    // };
+
+    const handleEditInputChange = (e) => {
+      if (e.target.name === "photo") {
+        const selectedFile = e.target.files[0];
+        setEditedCard({
+                ...editedCard,
+                [e.target.name]: selectedFile,
+              });
+        console.log(selectedFile)
+
+        setFile(URL.createObjectURL(selectedFile));
+      } else {
+          setEditedCard({ ...editedCard, [e.target.name]: e.target.value });
+      }
     };
     
     const handleEditSubmit = async (event) => {
         try {
             const formData = new FormData();
-            formData.append('photo', imageFile);
+            formData.append('photo', editedCard.photo);
             await patch('cards/'+id_card, editedCard, formData);
             toast.success("Vos données ont été enregistrées")
 
@@ -66,7 +82,7 @@ const EditCard = ({handleHideEditCard, id_card}) => {
             </div>
         </div>
         <div>
-            <EditCardHeader handleHideEditCard={handleHideEditCard} id_card={id_card} editedCard={editedCard} handleEditInputChange={handleEditInputChange} handleEditSubmit={handleEditSubmit}/>
+            <EditCardHeader file={file} setFile={setFile} handleHideEditCard={handleHideEditCard} id_card={id_card} editedCard={editedCard} handleEditInputChange={handleEditInputChange} handleEditSubmit={handleEditSubmit}/>
         </div>
     </div>
   )
