@@ -76,6 +76,7 @@ const ModalServices = ({id_card, setModalServices, updateData}) => {
             await axios.post('http://localhost:5000/api/services', insertData);
             setModalServices(false)
             toast.success("Le service a été bien ajouté")
+            console.log(insertData)
           } catch (error) {
             console.log(error);
           }

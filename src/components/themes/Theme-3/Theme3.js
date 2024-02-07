@@ -105,7 +105,7 @@ const Theme3 = () => {
                         </div>
                         ) : null
                     }
-                    {userData.phone_number ?(
+                    {userData.whatsapp ?(
                         <div>
                             <a href={`${userData.phone_number}`}> <FaWhatsapp className='theme3-one-icon' color='#25D366' size={30} /> </a>
                         </div>

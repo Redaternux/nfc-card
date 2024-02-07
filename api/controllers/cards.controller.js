@@ -75,18 +75,47 @@ exports.findAll = async (req, res) => {
   };
   
 
-exports.updateOne =async  (req, res) => {
-  const naissance = new Date().toISOString().slice(0, 10);
-  const photo = req.file
+// exports.updateOne =async  (req, res) => {
+//   const naissance = new Date().toISOString().slice(0, 10);
+//   const photo = req.file.filename
 
-  const data=req.body
-  const query = 'UPDATE user_card SET `full_name`=?, `email`=?, `phone_number`=?, `fonction`=?, `societe`=?, `website`=?, `theme`=?, `photo`=?, `youtube`=?, `linkedin`=?, `instagram`=?, `adresse`=?, `naissance`=?, `twitter`=?, `reddit`=?, `whatsapp`=?, `pinterrest`=?, `tiktok`=?, `card_name`=?, `status`=?, `facebook`=? where id=?'
-  const values = [data.full_name, data.email, data.phone_number,data.fonction, data.societe, data.website, data.theme, data.photo, data.youtube, data.linkedin, data.instagram, data.adresse, naissance, data.twitter, data.reddit, data.whatsapp, data.pinterrest, data.tiktok, data.card_name, data.status, data.facebook, req.params.id_card];
+//   // if (req.file) {
+//   //   photo = req.file.filename;
+//   // }
+
+//   const id_card = req.params.id_card;
+
+//   const data=req.body
+//   const query = 'UPDATE user_card SET `full_name`=?, `email`=?, `phone_number`=?, `fonction`=?, `societe`=?, `website`=?, `theme`=?, `photo`=?, `youtube`=?, `linkedin`=?, `instagram`=?, `adresse`=?, `naissance`=?, `twitter`=?, `reddit`=?, `whatsapp`=?, `pinterrest`=?, `tiktok`=?, `card_name`=?, `status`=?, `facebook`=? where id=?'
+//   const values = [data.full_name, data.email, data.phone_number,data.fonction, data.societe, data.website, data.theme, photo , data.youtube, data.linkedin, data.instagram, data.adresse, naissance, data.twitter, data.reddit, data.whatsapp, data.pinterrest, data.tiktok, data.card_name, data.status, data.facebook, id_card];
   
   
-  const search_query = mysql.format(query,values)
-  console.log(search_query)
-  const results=await execQuery(search_query)
+//   const search_query = mysql.format(query,values)
+//   console.log(search_query)
+//   const results=await execQuery(search_query)
+//   return sendResponse(res, 200, "DATA_SUCCESS", results);
+// };
+
+exports.updateOne = async (req, res) => {
+
+  const naissance = new Date().toISOString().slice(0, 10);
+  const data = req.body;
+  const id_card = req.params.id_card;
+  const photo = req.file;
+
+  let query;
+  let values;
+
+  if (photo) {
+    query = 'UPDATE user_card SET `full_name`=?, `email`=?, `phone_number`=?, `fonction`=?, `societe`=?, `website`=?, `theme`=?, `photo`=?, `youtube`=?, `linkedin`=?, `instagram`=?, `adresse`=?, `naissance`=?, `twitter`=?, `reddit`=?, `whatsapp`=?, `pinterrest`=?, `tiktok`=?, `card_name`=?, `status`=?, `facebook`=? where id=?'
+    values = [data.full_name, data.email, data.phone_number,data.fonction, data.societe, data.website, data.theme, photo.filename , data.youtube, data.linkedin, data.instagram, data.adresse, naissance, data.twitter, data.reddit, data.whatsapp, data.pinterrest, data.tiktok, data.card_name, data.status, data.facebook, id_card];
+  } else {
+    query = 'UPDATE user_card SET `full_name`=?, `email`=?, `phone_number`=?, `fonction`=?, `societe`=?, `website`=?, `theme`=?, `youtube`=?, `linkedin`=?, `instagram`=?, `adresse`=?, `naissance`=?, `twitter`=?, `reddit`=?, `whatsapp`=?, `pinterrest`=?, `tiktok`=?, `card_name`=?, `status`=?, `facebook`=? where id=?'
+    values = [data.full_name, data.email, data.phone_number,data.fonction, data.societe, data.website, data.theme , data.youtube, data.linkedin, data.instagram, data.adresse, naissance, data.twitter, data.reddit, data.whatsapp, data.pinterrest, data.tiktok, data.card_name, data.status, data.facebook, id_card];
+  }
+
+  let search_query = mysql.format(query, values);
+  let results = await execQuery(search_query);
   return sendResponse(res, 200, "DATA_SUCCESS", results);
 };
 

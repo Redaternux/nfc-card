@@ -7,7 +7,9 @@ const commandesRoutes = require('./commandes.routes');
 const servicesRoutes = require('./Services.routes');
 const galerieRoutes = require('./galerie.routes')
 const bs_hoursRoutes = require('./bs_hours.routes')
-const user_cmdRoutes = require('./user_cmd.routes')
+const cmdsRoutes = require('./user_cmd.routes')
+const contactRoutes = require('./contact.routes')
+
 
 
 
@@ -22,5 +24,6 @@ module.exports = function(app) {
     app.use("/api/services", servicesRoutes);
     app.use("/api/galerie", galerieRoutes);
     app.use("/api/bs_hours", bs_hoursRoutes);
-    app.use("/api/user_cmd", user_cmdRoutes);
+    app.use("/api/cmds", cmdsRoutes);
+    app.use("/api/contact", contactRoutes);
   };

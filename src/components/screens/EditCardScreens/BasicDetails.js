@@ -12,31 +12,41 @@ import { toast } from 'react-toastify';
 
 
 
-const BasicDetails = ({ handleEditInputChange, handleHideEditCard, id_card}) => {
+const BasicDetails = ({file, setFile, editedCard, handleEditInputChange, handleEditSubmit, handleHideEditCard, id_card}) => {
 
     // const [file, setFile] = useState("");
-    const [imageUrl, setImageUrl] = useState('');
-    const [file, setFile] = useState("");
+    // const [imageUrl, setImageUrl] = useState('');
+    // const [file, setFile] = useState("");
     const [userData, setUserData] = useState({})
-    const [editedCard, setEditedCard] = useState({})
+    // const [editedCard, setEditedCard] = useState({
+    //     card_name:'',
+    //     fonction:'',
+    //     full_name:'',
+    //     email:'',
+    //     phone_number:'',
+    //     adresse:'',
+    //     societe:'',
+    //     photo: null,
+    // })
 
 
     const location = useLocation();
 
 
-    const handleValueChange = (e) => {
-        if (e.target.name === "photo") {
-          const selectedFile = e.target.files[0];
-          console.log(selectedFile)
-          setEditedCard({
-                  ...editedCard,
-                  [e.target.name]: e.target.files[0],
-                });
-          setFile(URL.createObjectURL(selectedFile));
-        } else {
-            setEditedCard({ ...editedCard, [e.target.name]: e.target.value });
-        }
-      };
+    // const handleValueChange = (e) => {
+    //     if (e.target.name === "photo") {
+    //       const selectedFile = e.target.files[0];
+    //       setEditedCard({
+    //               ...editedCard,
+    //               [e.target.name]: selectedFile,
+    //             });
+    //       console.log(selectedFile)
+
+    //       setFile(URL.createObjectURL(selectedFile));
+    //     } else {
+    //         setEditedCard({ ...editedCard, [e.target.name]: e.target.value });
+    //     }
+    //   };
 
       useEffect(() => {
         const fetchData = async () => {
@@ -47,7 +57,7 @@ const BasicDetails = ({ handleEditInputChange, handleHideEditCard, id_card}) => 
             : { url: noImgSs };
     
             setFile(imageData.url)
-            setEditedCard(response.data);
+            // setEditedCard(response.data);
           } catch (error) {
             console.error('Error fetching data:', error);
           }
@@ -57,18 +67,29 @@ const BasicDetails = ({ handleEditInputChange, handleHideEditCard, id_card}) => 
       
       }, []);
 
-      const handleEditSubmit = async (event) => {
-        try {
-            const formData = new FormData();
-                // formData.append('photo', editedCard.photo);
-            await axios.patch('http://localhost:5000/api/cards/'+id_card, editedCard);
-            toast.success("Vos données ont été enregistrées")
+    //   const handleEditSubmit = async (event) => {
+    //     try {
+    //         const formData = new FormData();
+    //         formData.append("card_name", editedCard.card_name);
+    //         formData.append("fonction", editedCard.fonction);
+    //         formData.append("full_name", editedCard.full_name);
+    //         formData.append("email", editedCard.email);
+    //         formData.append("phone_number", editedCard.phone_number);
+    //         formData.append("adresse", editedCard.adresse);
+    //         formData.append("societe", editedCard.societe);
+    //         formData.append("photo", editedCard.photo);
+    //         await axios.patch('http://localhost:5000/api/cards/'+id_card, 
+    //             editedCard,
+            
+    //             { headers: { 'Content-Type': 'multipart/form-data' } }, 
+    //         formData);
+    //         toast.success("Vos données ont été enregistrées")
 
-          } catch (error) {
-            console.error('Error fetching data:', error);
-          }
+    //       } catch (error) {
+    //         console.error('Error fetching data:', error);
+    //       }
  
-    };
+    // };
     
 
     // const fetchPhoto = async () => {
@@ -122,11 +143,11 @@ const BasicDetails = ({ handleEditInputChange, handleHideEditCard, id_card}) => 
                <div className="basic-details-input-row">
                     <div>
                         <label className='basic-details-label'>Nom de la carte</label> <br/>
-                        <input className='basic-details-input' type="text" placeholder="card name" name='card_name' value={editedCard.card_name} onChange={handleValueChange}/> 
+                        <input className='basic-details-input' type="text" placeholder="card name" name='card_name' value={editedCard.card_name} onChange={handleEditInputChange}/> 
                     </div>
                     <div>
                         <label className='basic-details-label'>Occupation</label> <br/>
-                        <input className='basic-details-input' type="text" placeholder="Occupation" name='fonction' value={editedCard.fonction} onChange={handleValueChange} />
+                        <input className='basic-details-input' type="text" placeholder="Occupation" name='fonction' value={editedCard.fonction} onChange={handleEditInputChange} />
                     </div>
                     {/* <div>
                         <label className='basic-details-label'>Photo</label> <br />
@@ -146,27 +167,27 @@ const BasicDetails = ({ handleEditInputChange, handleHideEditCard, id_card}) => 
                 <div className="basic-details-input-row">
                     <div>
                         <label className='basic-details-label'>Nom complet</label> <br/>
-                        <input className='basic-details-input' type="text" placeholder="full name" name='full_name' value={editedCard.full_name} onChange={handleValueChange} />
+                        <input className='basic-details-input' type="text" placeholder="full name" name='full_name' value={editedCard.full_name} onChange={handleEditInputChange} />
                     </div>
                     <div>
                         <label className='basic-details-label'>Email</label> <br/>
-                        <input className='basic-details-input' type="email" placeholder="email" name='email' value={editedCard.email} onChange={handleValueChange} />
+                        <input className='basic-details-input' type="email" placeholder="email" name='email' value={editedCard.email} onChange={handleEditInputChange} />
                     </div>
                 </div>
                 <div className="basic-details-input-row">
                     <div>
                         <label className='basic-details-label'>Phone</label> <br/>
-                        <input className='basic-details-input' type="text" placeholder="Phone" name='phone_number' value={editedCard.phone_number} onChange={handleValueChange} />
+                        <input className='basic-details-input' type="text" placeholder="Phone" name='phone_number' value={editedCard.phone_number} onChange={handleEditInputChange} />
                     </div>
                     <div>
                         <label className='basic-details-label'>Adresse</label> <br/>
-                        <input className='basic-details-input' type="text" placeholder="Adresse" name='adresse' value={editedCard.adresse} onChange={handleValueChange} />
+                        <input className='basic-details-input' type="text" placeholder="Adresse" name='adresse' value={editedCard.adresse} onChange={handleEditInputChange} />
                     </div>
                 </div>
                 <div className="basic-details-input-row">
                     <div>
                         <label className='basic-details-label'>Société</label> <br/>
-                        <input className='basic-details-input' type="text" placeholder="Société" name='societe' value={editedCard.societe} onChange={handleValueChange} />
+                        <input className='basic-details-input' type="text" placeholder="Société" name='societe' value={editedCard.societe} onChange={handleEditInputChange} />
                     </div>
                     
                 </div>
@@ -174,7 +195,7 @@ const BasicDetails = ({ handleEditInputChange, handleHideEditCard, id_card}) => 
                     <label className='basic-details-label'>Image de la carte</label> <br/>
                     <div className="settings-image-container" style={{ maxWidth: '150px', maxHeight: '150px', marginTop: '10px' }}>
                         <img src={file} className="settings-image" alt='im' />
-                        <input type="file" name="image" id="image" accept='image/*' className="inputfile" onChange={handleValueChange}  hidden/>
+                        <input type="file" name="photo" id="image" accept='image/*' className="inputfile" onChange={handleEditInputChange}  hidden/>
                         <label htmlFor="image" className="add-image-overlay">
                             <FontAwesomeIcon icon={faPlus} className='add-image-button' />
                         </label>

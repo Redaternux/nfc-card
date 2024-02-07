@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Theme2.css"
-import { FaEnvelope, FaPhone, FaGlobe, FaFacebook, FaLinkedin, FaYoutube, FaInstagram, FaPinterest, FaTiktok, FaReddit, FaLocationArrow, FaCalendar } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaGlobe, FaFacebook, FaLinkedin, FaYoutube, FaInstagram, FaPinterest, FaTiktok, FaReddit, FaLocationArrow, FaCalendar, FaWhatsapp } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { saveVCard, generateVCard } from '../../VcardsGenerator/VcardsGenerator';
@@ -63,13 +63,19 @@ const Theme2 = () => {
         {data.length > 0 && (
             <div className='Theme2-social-main'>
                 <div className='Theme2-social-container'>
-                    {userData.facebook ? (
+                    {userData.linkedin ? (
                       <div className='Theme2-Facebook-content'>
                         <a style={{ color:'white', display:'flex' }}  href={`${userData.linkedin}`} > <FaLinkedin size={32} /> </a>
                       </div>
                     ): null}
 
-                    {userData.facebook ? (
+                    {userData.whatsapp ? (
+                      <div className='Theme2-Facebook-content'>
+                        <a style={{ color:'white', display:'flex' }}  href={`${userData.whatsapp}`} > <FaWhatsapp size={32} /> </a>
+                      </div>
+                    ): null}
+
+                    {userData.instagram ? (
                       <div className='Theme2-Facebook-content'>
                         <a style={{ color:'white', display:'flex' }}  href={`${userData.instagram}`} > <FaInstagram size={32} /> </a>
                       </div>
@@ -81,31 +87,31 @@ const Theme2 = () => {
                       </div>
                     ): null}
 
-                    {userData.facebook ? (
+                    {userData.youtube ? (
                       <div className='Theme2-Facebook-content'>
                         <a style={{ color:'white', display:'flex' }}  href={`${userData.youtube}`} > <FaYoutube size={32} /> </a>
                       </div>
                     ): null}
 
-                    {userData.facebook ? (
+                    {userData.website ? (
                       <div className='Theme2-Facebook-content'>
                         <a style={{ color:'white', display:'flex' }}  href={`${userData.website}`} > <FaGlobe size={32} /> </a>
                       </div>
                     ): null}
 
-                    {userData.facebook ? (
+                    {userData.pinterrest ? (
                       <div className='Theme2-Facebook-content'>
                         <a style={{ color:'white', display:'flex' }}  href={`${userData.pinterrest}`} > <FaPinterest size={32} /> </a>
                       </div>
                     ): null}
 
-                    {userData.facebook ? (
+                    {userData.tiktok ? (
                       <div className='Theme2-Facebook-content'>
                         <a style={{ color:'white', display:'flex' }}  href={`${userData.tiktok}`} > <FaTiktok size={32} /> </a>
                       </div>
                     ): null}
 
-                    {userData.facebook ? (
+                    {userData.reddit ? (
                       <div className='Theme2-Facebook-content'>
                         <a style={{ color:'white', display:'flex' }}  href={`${userData.reddit}`} > <FaReddit size={32} /> </a>
                       </div>

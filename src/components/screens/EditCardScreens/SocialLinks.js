@@ -5,6 +5,15 @@ import { CgWebsite } from 'react-icons/cg';
 const SocialLinks = ({handleEditSubmit, handleEditInputChange, editedCard}) => {
 
 
+  const generateWhatsappLink = (phoneNumber) => {
+    // Remove non-numeric characters from the phone number
+    const cleanedPhoneNumber = phoneNumber.replace(/\D/g, '');
+
+    // Create the WhatsApp link
+    return `https://wa.me/${cleanedPhoneNumber}`;
+  };
+
+
 
 
   return (
@@ -18,7 +27,7 @@ const SocialLinks = ({handleEditSubmit, handleEditInputChange, editedCard}) => {
                   <CgWebsite size={30} />
                 </div>
                 <div className='social-links-input'>
-                  <input className='social-links-form-controller' onChange={handleEditInputChange} value={editedCard.website} type='text' placeholder='Site web' name='website' />
+                  <input className='social-links-form-controller' onChange={handleEditInputChange} value={editedCard.website} type='text' placeholder='Lien site web' name='website' />
                 </div>
               </div>
             </div>
@@ -31,7 +40,7 @@ const SocialLinks = ({handleEditSubmit, handleEditInputChange, editedCard}) => {
                   <FaInstagram size={30} />
                 </div>
                 <div className='social-links-input'>
-                  <input className='social-links-form-controller' onChange={handleEditInputChange} value={editedCard.instagram} type='text' placeholder='instagram' name='instagram' />
+                  <input className='social-links-form-controller' onChange={handleEditInputChange} value={editedCard.instagram} type='text' placeholder='Lien instagram' name='instagram' />
                 </div>
               </div>
             </div>
@@ -44,7 +53,7 @@ const SocialLinks = ({handleEditSubmit, handleEditInputChange, editedCard}) => {
                   <FaTwitter size={30} />
                 </div>
                 <div className='social-links-input'>
-                  <input className='social-links-form-controller' onChange={handleEditInputChange} value={editedCard.twitter} type='text' placeholder='twitter' name='twitter' />
+                  <input className='social-links-form-controller' onChange={handleEditInputChange} value={editedCard.twitter} type='text' placeholder='Lien twitter' name='twitter' />
                 </div>
               </div>
             </div>
@@ -57,7 +66,7 @@ const SocialLinks = ({handleEditSubmit, handleEditInputChange, editedCard}) => {
                   <FaFacebook size={30} />
                 </div>
                 <div className='social-links-input'>
-                  <input className='social-links-form-controller' onChange={handleEditInputChange} value={editedCard.facebook} type='text' placeholder='facebook' name='facebook' />
+                  <input className='social-links-form-controller' onChange={handleEditInputChange} value={editedCard.facebook} type='text' placeholder='Lien facebook' name='facebook' />
                 </div>
               </div>
             </div>
@@ -70,7 +79,7 @@ const SocialLinks = ({handleEditSubmit, handleEditInputChange, editedCard}) => {
                   <FaReddit size={30} />
                 </div>
                 <div className='social-links-input'>
-                  <input className='social-links-form-controller' onChange={handleEditInputChange} value={editedCard.reddit} type='text' placeholder='reddit' name='reddit' />
+                  <input className='social-links-form-controller' onChange={handleEditInputChange} value={editedCard.reddit} type='text' placeholder='Lien reddit' name='reddit' />
                 </div>
               </div>
             </div>
@@ -83,7 +92,7 @@ const SocialLinks = ({handleEditSubmit, handleEditInputChange, editedCard}) => {
                   <FaYoutube size={30} />
                 </div>
                 <div className='social-links-input'>
-                  <input className='social-links-form-controller' onChange={handleEditInputChange} value={editedCard.youtube} type='text' placeholder='youtube' name='youtube' />
+                  <input className='social-links-form-controller' onChange={handleEditInputChange} value={editedCard.youtube} type='text' placeholder='Lien youtube' name='youtube' />
                 </div>
               </div>
             </div>
@@ -96,7 +105,7 @@ const SocialLinks = ({handleEditSubmit, handleEditInputChange, editedCard}) => {
                   <FaLinkedin size={30} />
                 </div>
                 <div className='social-links-input'>
-                  <input className='social-links-form-controller' onChange={handleEditInputChange} value={editedCard.linkedin} type='text' placeholder='linkedin' name='linkedin' />
+                  <input className='social-links-form-controller' onChange={handleEditInputChange} value={editedCard.linkedin} type='text' placeholder='Lien linkedin' name='linkedin' />
                 </div>
               </div>
             </div>
@@ -109,7 +118,18 @@ const SocialLinks = ({handleEditSubmit, handleEditInputChange, editedCard}) => {
                   <FaWhatsapp size={30} />
                 </div>
                 <div className='social-links-input'>
-                  <input className='social-links-form-controller' onChange={handleEditInputChange} value={editedCard.whatsapp} type='text' placeholder='whatsapp' name='whatsapp' />
+                  <input className='social-links-form-controller' 
+                  onChange={(e) => {
+                    // Update the state for WhatsApp and generate the link
+                    handleEditInputChange(e);
+                    const whatsappLink = generateWhatsappLink(e.target.value);
+                    handleEditInputChange({ target: { name: 'whatsapp', value: whatsappLink } });
+                  }}
+                  value={editedCard.whatsapp} 
+                  type='text' 
+                  placeholder='Lien whatsapp' 
+                  // name='whatsapp' 
+                  />
                 </div>
               </div>
             </div>
@@ -122,7 +142,7 @@ const SocialLinks = ({handleEditSubmit, handleEditInputChange, editedCard}) => {
                   <FaPinterest size={30} />
                 </div>
                 <div className='social-links-input'>
-                  <input className='social-links-form-controller' onChange={handleEditInputChange} value={editedCard.pinterrest} type='text' placeholder='pinterrest' name='pinterrest' />
+                  <input className='social-links-form-controller' onChange={handleEditInputChange} value={editedCard.pinterrest} type='text' placeholder='Lien pinterrest' name='pinterrest' />
                 </div>
               </div>
             </div>
@@ -135,7 +155,7 @@ const SocialLinks = ({handleEditSubmit, handleEditInputChange, editedCard}) => {
                   <FaTiktok size={30} />
                 </div>
                 <div className='social-links-input'>
-                  <input className='social-links-form-controller' onChange={handleEditInputChange} value={editedCard.tiktok} type='text' placeholder='tiktok' name='tiktok' />
+                  <input className='social-links-form-controller' onChange={handleEditInputChange} value={editedCard.tiktok} type='text' placeholder='Lien tiktok' name='tiktok' />
                 </div>
               </div>
             </div>

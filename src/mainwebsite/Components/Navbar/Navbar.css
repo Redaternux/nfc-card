@@ -16,12 +16,13 @@
 }
 
 .wb-login-btn{
-    margin-left: 5rem;
+    margin-left: 3rem;
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 1rem;
     cursor: pointer;
     transition: 0.3s;
+	font-size: 16px;
 }
 
 .wb-wcm-nav a {
@@ -69,6 +70,10 @@
 		opacity: 1;
 	}
 
+	.wb-wcm-nav li{
+		display: none;
+	}
+
 	.wb-wcm-header .wb-wcm-nav {
 		position: fixed;
 		top: -100vh;
@@ -103,4 +108,12 @@
 		margin-left: 10px;
 		color: black;
 	}
+}
+
+.thanks_cmd{
+	color: #8b4bb5;
+	font-size: 20px;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10px;
 }

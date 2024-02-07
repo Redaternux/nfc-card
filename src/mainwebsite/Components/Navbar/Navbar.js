@@ -51,6 +51,14 @@ const Navbar = () => {
               <li>
                 <Link to="sixth-div" smooth={true} duration={600}>Contact</Link>
               </li>
+
+              <button className='wb-login-btn' onClick={navToLogin}>
+                  Se connecter
+                </button>
+                <button className='wb-login-btn' onClick={openModal}>
+                  Acheter ma carte
+                </button>
+                {openCmd && <CmdModal closeModal={closeModal} />}
                 
                 <button
                   className="wb-nav-btn wb-nav-close-btn"
@@ -58,13 +66,7 @@ const Navbar = () => {
                   <FaTimes />
                 </button>
             </nav>
-                <button className='wb-login-btn' onClick={navToLogin}>
-                  Se connecter
-                </button>
-                <button className='wb-login-btn' onClick={openModal}>
-                  Acheter ma carte
-                </button>
-                {openCmd && <CmdModal closeModal={closeModal} />}
+                
             <button
               className="wb-nav-btn"
               onClick={showNavbar}>

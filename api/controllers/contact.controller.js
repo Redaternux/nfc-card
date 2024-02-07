@@ -10,8 +10,8 @@ exports.createOne = async (req, res) => {
   try {
     console.log('Received data:', data);
 
-    const query = 'INSERT INTO cmds (fullname, email, phone_number , quantity) VALUES (?, ?, ?, ?)';
-    const values = [data.fullname,data.email, data.phone_number, data.quantity];
+    const query = 'INSERT INTO contact (fullname, email, message) VALUES (?, ?, ?)';
+    const values = [data.fullname,data.email, data.message];
     const search_query = mysql.format(query, values);
     console.log('SQL query:', search_query);
 

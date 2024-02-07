@@ -32,6 +32,8 @@ exports.createOne = async (req,res) => {
     const data=req.body
     const image = req.file || ""
 
+    
+
     try {
       const query = 'INSERT INTO services (id_card, id_user, name, description, image) VALUES (?, ?, ?, ?, ?)';
       const values = [data.id_card, data.id_user, data.name, data.description, image.filename];

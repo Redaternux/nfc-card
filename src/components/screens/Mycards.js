@@ -149,9 +149,9 @@ const Mycards = () => {
   }
   
   const handleNewCard = () => {
-    if (userCards.length >= 10) {
+    if (userCards.length >= 5) {
       // alert("Vous n'avez pas le droit de créer plus de 10 cartes");
-      toast.error("Vous n'avez pas le droit de créer plus de 10 cartes")
+      toast.error("Vous n'avez pas le droit de créer plus de 5 cartes")
     } else {
       setShowNewCard(true);
     }
