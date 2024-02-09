@@ -4,13 +4,15 @@ import EditCardHeader from './EditCardScreens/EditCardHeader'
 import { useState, useEffect } from 'react'
 import { get,patch } from '../../http/api';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 
 const EditCard = ({handleHideEditCard, id_card}) => {
 
     const [editedCard, setEditedCard] = useState({})
-    const [imageFile, setImageFile] = useState(null);
     const [file, setFile] = useState('')
+
+    
 
     // const handleEditInputChange = (event) => {
     //     console.log(event.target.value)
@@ -35,7 +37,7 @@ const EditCard = ({handleHideEditCard, id_card}) => {
                 ...editedCard,
                 [e.target.name]: selectedFile,
               });
-        console.log(selectedFile)
+        // console.log(selectedFile)
 
         setFile(URL.createObjectURL(selectedFile));
       } else {
@@ -47,7 +49,7 @@ const EditCard = ({handleHideEditCard, id_card}) => {
         try {
             const formData = new FormData();
             formData.append('photo', editedCard.photo);
-            await patch('cards/'+id_card, editedCard, formData);
+            await axios.patch('http://localhost:5000/api/cards/'+id_card, editedCard, { headers: { 'Content-Type': 'multipart/form-data' } }, formData);
             toast.success("Vos données ont été enregistrées")
 
           } catch (error) {
@@ -82,7 +84,7 @@ const EditCard = ({handleHideEditCard, id_card}) => {
             </div>
         </div>
         <div>
-            <EditCardHeader file={file} setFile={setFile} handleHideEditCard={handleHideEditCard} id_card={id_card} editedCard={editedCard} handleEditInputChange={handleEditInputChange} handleEditSubmit={handleEditSubmit}/>
+            <EditCardHeader file={file}  handleHideEditCard={handleHideEditCard} id_card={id_card} editedCard={editedCard} handleEditInputChange={handleEditInputChange} handleEditSubmit={handleEditSubmit}/>
         </div>
     </div>
   )

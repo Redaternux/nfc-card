@@ -127,7 +127,7 @@ const SocialLinks = ({handleEditSubmit, handleEditInputChange, editedCard}) => {
                   }}
                   value={editedCard.whatsapp} 
                   type='text' 
-                  placeholder='Lien whatsapp' 
+                  placeholder='Numéro WhatsApp'
                   // name='whatsapp' 
                   />
                 </div>
