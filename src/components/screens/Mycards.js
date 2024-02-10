@@ -54,7 +54,6 @@ const Mycards = () => {
 
 
   const handleCheckboxChange = async (index) => {
-    console.log("Checkbox  3la  l index:", index);
 
     try {
       if (index >= 0 && index < userCards.length) {
