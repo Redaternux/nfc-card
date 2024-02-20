@@ -10,12 +10,15 @@ import {Switch} from "antd"
 import { useNavigate } from 'react-router-dom';
 import ModalDelete from './ModalDelete';
 import InactiveCard from './InactiveCard';
+import { useRef } from 'react';
 
 
 const Mycards = () => {
   const [loading,setLoading]=useState(true)
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedCardId, setSelectedCardId] = useState(null);
+
+ 
 
   const handleShowDeleteCardModal = (cardId, index) => {
     console.log(cardId)
@@ -124,6 +127,7 @@ const Mycards = () => {
     }
     
   }
+  
 
   // const handleOrder = async (id) => {
   //   try {
