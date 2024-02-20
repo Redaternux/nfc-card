@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import "./Navbar.css"
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useRef } from 'react'
-import logo from "../../Assets/SmartCard_Light.png"
+// import logo from "../../Assets/SmartCard_Light.png"
 import { Link } from 'react-scroll';
 import { useNavigate } from 'react-router-dom';
 import CmdModal from './CmdModal';
+import logo from '../../../Assets/sweetCard_logo_dark.png'
 
 const Navbar = () => {
 
@@ -34,7 +35,7 @@ const Navbar = () => {
   return (
     <div>
         <header className='wb-wcm-header'>
-            <img src={logo} alt='logo' width={150} />
+            <img src={logo} alt='logo' width={70} style={{ marginLeft: '70px' }} />
             <nav className='wb-wcm-nav' ref={navRef}>
               <li>
                 <Link to="first-div" smooth={true} duration={600}>Accueil</Link>

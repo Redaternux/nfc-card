@@ -3,7 +3,7 @@ import "./WelcomeSection.css"
 import Navbar from '../Navbar/Navbar'
 import 'animate.css';
 import img from "../../Assets/new6506_65968.png"
-import imaggg from "../../Assets/htghjghk13576506_65968.png"
+import imaggg from "../../Assets/welcome_image_section.png"
 import { useNavigate } from 'react-router-dom';
 import 'animate.css';
 
@@ -23,7 +23,7 @@ const WelcomeSection = () => {
             <p className='animate__animated animate__fadeIn'>
               Boostez votre présence professionnelle grâce à la technologie NFC au Maroc. 
               Optez pour des cartes de visite digitales innovantes et interactives. 
-              Avec Smart Card, transformez votre manière de partager vos informations 
+              Avec sweet Card, transformez votre manière de partager vos informations 
               professionnelles et laissez une impression mémorable sur vos contacts. 
             </p>
             <div className="wb-welcome-btn animate__animated animate__fadeInLeft">

@@ -7,26 +7,47 @@ import noImage from '../no-image.png'
 export const useUserData = () => {
     const [userData, setUserData] = useState({});
     const [imageUrl, setImageUrl] = useState('');
+    const [loading, setLoading] = useState(true);
   
     const { id_card } = useParams();
     const extractedNumber = id_card.split('-')[1];
-  
+
     const fetchUserData = async () => {
       try {
         const response = await get(`cards/card/${extractedNumber}`);
         setUserData(response.data);
-        console.log(extractedNumber);
         setImageUrl(response.data.photo ? `http://localhost:5000/api/uploads/${response.data.photo}` : noImage);
       } catch (error) {
         console.error('Error fetching user data:', error);
+      } finally {
+        setLoading(false);
       }
     };
   
     useEffect(() => {
-      fetchUserData();
+      const delay = setTimeout(() => {
+        fetchUserData();
+      }, 2000);
+  
+      return () => clearTimeout(delay);
     }, []);
   
-    return { userData, imageUrl };
+    // const fetchUserData = async () => {
+    //   try {
+    //     const response = await get(`cards/card/${extractedNumber}`);
+    //     setUserData(response.data);
+    //     console.log(extractedNumber);
+    //     setImageUrl(response.data.photo ? `http://localhost:5000/api/uploads/${response.data.photo}` : noImage);
+    //   } catch (error) {
+    //     console.error('Error fetching user data:', error);
+    //   }
+    // };
+  
+    // useEffect(() => {
+    //   fetchUserData();
+    // }, []);
+  
+    return { userData, imageUrl, loading };
 };
 
 export const useGalleryData = () => {

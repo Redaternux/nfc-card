@@ -5,7 +5,7 @@
 
 
 .theme5-container{
-    max-width: 450px;
+    width: 450px;
     height: 95vh;
     overflow-y: scroll;
     border-radius: 20px;

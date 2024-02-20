@@ -216,3 +216,20 @@
   .user-data{
     text-decoration-line: none;
   }
+
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust as needed */
+  }
+  
+  .loading-icon {
+    width: 100px; /* Adjust the size of the icon */
+    height: auto;
+    transition: transform 1s ease-in-out; /* Adjust the duration and easing as needed */
+  }
+  
+  .loading-icon:hover {
+    transform: scale(1.1);
+  }

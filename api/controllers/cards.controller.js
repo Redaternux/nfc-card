@@ -29,7 +29,7 @@ exports.createOne = async (req,res,user) => {
   const data=req.body
   let query = 'INSERT INTO user_card ( `rnd_id`,`full_name`, `email`, `phone_number`, `fonction` , `societe`, `website`, `theme`, `photo`, `youtube`, `linkedin`, `instagram`, `facebook`, `adresse`, `naissance`, `twitter`, `reddit`, `whatsapp`, `pinterrest`, `tiktok`, `card_name`, `status`, `card_date`,`id_user`)'+
                                             ' VALUES ("000000", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-  const values = [data.full_name, data.email, data.phone_number, data.fonction, data.societe, data.website, data.theme,image.filename,data.youtube, data.linkedin, data.instagram,data.facebook, data.adresse, data.naissance, data.twitter, data.reddit, data.whatsapp, data.pinterrest, data.tiktok, data.card_name, data.status, card_date, data.id_user];
+  const values = [data.full_name, data.email, data.phone_number, data.fonction, data.societe, data.website, 1 ,image.filename,data.youtube, data.linkedin, data.instagram,data.facebook, data.adresse, data.naissance, data.twitter, data.reddit, data.whatsapp, data.pinterrest, data.tiktok, data.card_name, 1, card_date, data.id_user];
   let search_query = mysql.format(query,values)
  
   let results=await execQuery(search_query) 

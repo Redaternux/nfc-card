@@ -66,8 +66,8 @@ const ContactSection = () => {
                 <div className="wb-contact-phone wb-contact-details">
                 <FaPhone size={30} />
                 <div className="wb-contact-topic">Télephone</div>
-                <div className="wb-contact-text-one">+212 652 032 156</div>
-                <div className="wb-contact-text-two">+212 932 146 678</div>
+                <div className="wb-contact-text-one">+212 648 016 115</div>
+                {/* <div className="wb-contact-text-two">+212 932 146 678</div> */}
                 </div>
                 <div className="wb-contact-email wb-contact-details">
                 <FaEnvelope size={30} />

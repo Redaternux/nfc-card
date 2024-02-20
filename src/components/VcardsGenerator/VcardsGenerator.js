@@ -9,6 +9,11 @@ export function generateVCard(userData) {
     userData.linkedin ? `X-SOCIALPROFILE;type=linkedin:x-user=${userData.linkedin}\n` : '',
     userData.pinterrest ? `X-SOCIALPROFILE;type=pinterrest:x-user=${userData.pinterrest}\n` : '',
     userData.youtube ? `X-SOCIALPROFILE;type=youtube:x-user=${userData.youtube}\n` : '',
+    userData.whatsapp ? `X-SOCIALPROFILE;type=whatsapp:x-user=${userData.whatsapp}\n` : '',
+    userData.website ? `X-SOCIALPROFILE;type=website:x-user=${userData.website}\n` : '',
+    userData.reddit ? `X-SOCIALPROFILE;type=reddit:x-user=${userData.reddit}\n` : '',
+    userData.tiktok ? `X-SOCIALPROFILE;type=tiktok:x-user=${userData.tiktok}\n` : '',
+
   ].join('');
 
   const vcard =

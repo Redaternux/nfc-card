@@ -5,6 +5,8 @@ import { FaFacebook, FaGlobe, FaInstagram, FaLinkedin, FaLocationArrow, FaMailBu
 import { useParams } from 'react-router-dom'
 import { generateVCard, saveVCard } from '../../VcardsGenerator/VcardsGenerator'
 import { useGalleryData, useUserData, useServiceData, useHoursData } from '../../../http/CustomHooks'
+import loadingIcon from '../../../Assets/sweetCard_logo_owncolor.png'
+import 'animate.css/animate.min.css';
 
 
 
@@ -16,7 +18,7 @@ const Theme4 = () => {
 
     const { id_card } = useParams();
     const extractedNumber = id_card.split('-')[1];
-    const { userData, imageUrl } = useUserData(extractedNumber);
+    const { userData, imageUrl, loading } = useUserData(extractedNumber);
     const galleryData = useGalleryData(extractedNumber);
     const data = useServiceData(extractedNumber);
     const hoursData = useHoursData(extractedNumber);
@@ -46,8 +48,12 @@ const Theme4 = () => {
     };
     
 
-       if (userData === null) {
-        return <div>Loading...</div>;
+    if (loading) {
+        return (
+          <div className='loading-container' >
+            <img src={loadingIcon} width={100} alt='Loading Icon' className='loading-icon animate__animated animate__zoomInDown' /> <br/>
+          </div>
+        );
       }
 
   return (
@@ -148,7 +154,7 @@ const Theme4 = () => {
                             }
                             {userData.whatsapp ?(
                                 <div>
-                                    <a href={`${userData.phone_number}`}> <FaWhatsapp className='theme3-one-icon' color='#25D366' size={30} /> </a>
+                                    <a href={`${userData.whatsapp}`}> <FaWhatsapp className='theme3-one-icon' color='#25D366' size={30} /> </a>
                                 </div>
                                 ) : null
                             }

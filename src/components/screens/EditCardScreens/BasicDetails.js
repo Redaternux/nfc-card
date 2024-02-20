@@ -12,28 +12,28 @@ import { toast } from 'react-toastify';
 
 
 
-const BasicDetails = ({file, editedCard, handleEditInputChange, handleEditSubmit, handleHideEditCard, id_card}) => {
+const BasicDetails = ({file, editedCard, handleEditInputChange, handleEditSubmit, handleHideEditCard, id_card, fetchBasicData}) => {
 
     const [imageUrl, setImageUrl] = useState('');
  
     
 
       useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await get('cards/card/'+id_card);
-            const imageData = response.data.photo
-            ? await getImage(response.data.photo)
-            : { url: noImgSs };
+        // const fetchData = async () => {
+        //   try {
+        //     const response = await get('cards/card/'+id_card);
+        //     const imageData = response.data.photo
+        //     ? await getImage(response.data.photo)
+        //     : { url: noImgSs };
     
-            setImageUrl(imageData.url)
-            // setEditedCard(response.data);
-          } catch (error) {
-            console.error('Error fetching data:', error);
-          }
-        };
+        //     setImageUrl(imageData.url)
+        //     // setEditedCard(response.data);
+        //   } catch (error) {
+        //     console.error('Error fetching data:', error);
+        //   }
+        // };
       
-        fetchData(); 
+        fetchBasicData(); 
       
       }, []);
 
@@ -110,7 +110,7 @@ const BasicDetails = ({file, editedCard, handleEditInputChange, handleEditSubmit
                 <div>
                     <label className='basic-details-label'>Image de la carte</label> <br/>
                     <div className="settings-image-container" style={{ maxWidth: '150px', maxHeight: '150px', marginTop: '10px' }}>
-                        <img src={imageUrl} className="settings-image" alt='im' />
+                        <img src={file} className="settings-image" alt='im' />
                         <input type="file" name="photo" id="image" accept='image/*' className="inputfile" onChange={handleEditInputChange}  hidden/>
                         <label htmlFor="image" className="add-image-overlay">
                             <FontAwesomeIcon icon={faPlus} className='add-image-button' />

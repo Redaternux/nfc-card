@@ -5,6 +5,9 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { saveVCard, generateVCard } from '../../VcardsGenerator/VcardsGenerator';
 import { useGalleryData, useUserData, useServiceData, useHoursData } from '../../../http/CustomHooks'
+import loadingIcon from '../../../Assets/sweetCard_logo_owncolor.png'
+import Loading from '../../reusable/Loading';
+import 'animate.css/animate.min.css';
 
 
 
@@ -13,7 +16,7 @@ const Theme2 = () => {
 
     const { id_card } = useParams();
     const extractedNumber = id_card.split('-')[1];
-    const { userData, imageUrl } = useUserData(extractedNumber);
+    const { userData, imageUrl, loading } = useUserData(extractedNumber);
     const galleryData = useGalleryData(extractedNumber);
     const data = useServiceData(extractedNumber);
     const hoursData = useHoursData(extractedNumber);
@@ -33,10 +36,18 @@ const Theme2 = () => {
     const handleSaveClick = () => {
       saveVCard(vcardData, userData);
     };
+
+    if (loading) {
+      return (
+        <div className='loading-container' >
+          <img src={loadingIcon} width={100} alt='Loading Icon' className='loading-icon animate__animated animate__zoomInDown' /> <br/>
+        </div>
+      );
+    }
   
-      if (userData === null) {
-        return <div>Un instant...</div>;
-      }
+      // if (userData === null) {
+      //   return <div>Un instant...</div>;
+      // }
 
 
   return (

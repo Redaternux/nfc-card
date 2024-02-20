@@ -25,7 +25,7 @@ const ModalGallery = ({ handleGalerieSubmit, handleGalerieChange, setOpenGallery
                 </button>
             </div>
             <div className='upload-container'>
-                <input type='file' name='image' onChange={handleFileChange} id='uploadBtn'/>
+                <input type='file' accept='image/*' name='image' onChange={handleFileChange} id='uploadBtn'/>
                 <label for='uploadBtn' className="file-name"> Choisir une image </label>
                 <div style={{ marginTop:'40px' }}>
                     {selectedFileName}

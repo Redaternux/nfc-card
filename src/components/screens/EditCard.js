@@ -2,15 +2,60 @@ import React from 'react'
 import "./EditCard.css"
 import EditCardHeader from './EditCardScreens/EditCardHeader'
 import { useState, useEffect } from 'react'
-import { get,patch } from '../../http/api';
+import { get,patch, getImage } from '../../http/api';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import noImgSs from '../../no-image.png';
+
 
 
 const EditCard = ({handleHideEditCard, id_card}) => {
 
     const [editedCard, setEditedCard] = useState({})
     const [file, setFile] = useState('')
+    const [allowedCards, setAllowedCards] = useState(1);
+
+    const fetchUserData = async () => {
+      try {
+        const id_user = localStorage.getItem("id_user");
+        const response = await get(`users/${id_user}`);
+        setAllowedCards(response.data.allowed_cards);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    }
+    useEffect(() => {
+      fetchUserData();
+    }, []);
+
+
+    const handleCheckboxChange = async (index) => {
+
+      try {
+        if (index >= 0 && index < editedCard.length) {
+  
+          if (index >= allowedCards) {
+            toast.error("Vous n\'avez pas le droit d\'activer les cartes non autorisées.")
+            return;
+          }
+  
+          const newStatus = [...editedCard];
+          newStatus[index].status = !newStatus[index].status;
+          const statusValue = newStatus[index].status ? 1 : null;
+  
+          const dataState = {
+            ...newStatus[index],
+            status: statusValue
+          }
+    
+          await patch('cards/'+newStatus[index].id, dataState);
+          setEditedCard(newStatus);
+        }
+  
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
     
 
@@ -44,6 +89,21 @@ const EditCard = ({handleHideEditCard, id_card}) => {
           setEditedCard({ ...editedCard, [e.target.name]: e.target.value });
       }
     };
+
+    const fetchBasicData = async () => {
+      try {
+        const response = await get('cards/card/'+id_card);
+        const imageData = response.data.photo
+        ? await getImage(response.data.photo)
+        : { url: noImgSs };
+
+        setFile(imageData.url)
+        // setEditedCard(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
     
     const handleEditSubmit = async (event) => {
         try {
@@ -84,7 +144,7 @@ const EditCard = ({handleHideEditCard, id_card}) => {
             </div>
         </div>
         <div>
-            <EditCardHeader file={file}  handleHideEditCard={handleHideEditCard} id_card={id_card} editedCard={editedCard} handleEditInputChange={handleEditInputChange} handleEditSubmit={handleEditSubmit}/>
+            <EditCardHeader fetchBasicData={fetchBasicData} file={file} handleHideEditCard={handleHideEditCard} id_card={id_card} editedCard={editedCard} handleEditInputChange={handleEditInputChange} handleEditSubmit={handleEditSubmit}/>
         </div>
     </div>
   )

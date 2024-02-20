@@ -1,12 +1,12 @@
 import React from 'react'
 import "./TemplatesSection.css"
 import ModalImage from "../Modals/ModalImage"
-import first_one from "../../Assets/theme1_image_profile.png"
-import second_one from '../../Assets/theme2_image_profile.png'
-import third_one from '../../Assets/theme3_image_profile.png'
-import fourth_one from '../../Assets/theme4_image_profile.png'
-import fifth_one from '../../Assets/theme5_image_profile.png'
-import sixth_one from '../../Assets/theme6_image_profile.png'
+import first_one from "../../Assets/full_theme1.png"
+import second_one from '../../Assets/full_theme2.png'
+import third_one from '../../Assets/full_theme3.png'
+import fourth_one from '../../Assets/full_theme4.png'
+import fifth_one from '../../Assets/full_theme5.png'
+import sixth_one from '../../Assets/full_theme6.png'
 
 
 const TemplatesSection = () => {

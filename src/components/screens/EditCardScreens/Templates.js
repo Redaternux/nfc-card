@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
-import first_theme_image from '../../../Assets/theme1_image_profile.png'
-import second_theme_image from "../../../Assets/theme2_image_profile.png"
-import third_theme_image from "../../../Assets/theme3_image_profile.png"
-import fourth_theme_image from "../../../Assets/theme4_image_profile.png"
-import fifth_theme_image from "../../../Assets/theme5_image_profile.png"
-import sixth_theme_image from "../../../Assets/theme6_image_profile.png"
+import first_theme_image from '../../../mainwebsite/Assets/full_theme1.png'
+import second_theme_image from '../../../mainwebsite/Assets/full_theme2.png'
+import third_theme_image from '../../../mainwebsite/Assets/full_theme3.png'
+import fourth_theme_image from '../../../mainwebsite/Assets/full_theme4.png'
+import fifth_theme_image from '../../../mainwebsite/Assets/full_theme5.png'
+import sixth_theme_image from '../../../mainwebsite/Assets/full_theme6.png'
 
 
 import './Edition.css'

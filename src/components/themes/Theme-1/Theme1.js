@@ -5,6 +5,9 @@ import { generateVCard, saveVCard } from '../../VcardsGenerator/VcardsGenerator'
 import "./Theme1.css";
 import noImgProfile from '../../../no-image-icon-23479.png'
 import { useGalleryData, useUserData, useServiceData, useHoursData } from '../../../http/CustomHooks'
+import loadingIcon from '../../../Assets/sweetCard_logo_owncolor.png'
+import 'animate.css/animate.min.css';
+
 
 
 const Theme1 = () => {
@@ -13,7 +16,7 @@ const Theme1 = () => {
 
     const { id_card } = useParams();
     const extractedNumber = id_card.split('-')[1];
-    const { userData, imageUrl } = useUserData(extractedNumber);
+    const { userData, imageUrl, loading } = useUserData(extractedNumber);
     const galleryData = useGalleryData(extractedNumber);
     const data = useServiceData(extractedNumber);
     const hoursData = useHoursData(extractedNumber);
@@ -37,8 +40,12 @@ const Theme1 = () => {
 
 
 
-    if (userData === null) {
-      return <div>Un instant...</div>;
+    if (loading) {
+      return (
+        <div className='loading-container' >
+          <img src={loadingIcon} width={100} alt='Loading Icon' className='loading-icon animate__animated animate__zoomInDown' /> <br/>
+        </div>
+      );
     }
   
     return (

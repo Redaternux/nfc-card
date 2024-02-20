@@ -15,7 +15,7 @@ const Footer = () => {
         <FaLinkedin className='wb-ft-icon' size={30} />
       </div>
       <div>
-        &copy; {currentYear} SmartCard Maroc
+        &copy; {currentYear} sweetCard Maroc
       </div>
     </div>
   )

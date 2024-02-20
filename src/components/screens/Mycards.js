@@ -215,7 +215,7 @@ const Mycards = () => {
                         <thead className="card-list-head">
                           <tr className="card-list-head-row">
                             <th>Nom de la carte</th>
-                            <th>Status </th>
+                            {/* <th>Status </th> */}
                             <th>Date de création</th>
                             <th>Action</th>
                           </tr>
@@ -233,7 +233,7 @@ const Mycards = () => {
                                   <td>
                                     {cards.card_name}
                                   </td>
-                                  <td>
+                                  {/* <td>
                                     <Switch 
                                       size="small"
                                       className='switch-toggle-new-version'  
@@ -241,7 +241,7 @@ const Mycards = () => {
                                       onChange={() => {console.log('id', cards.id); handleCheckboxChange(index)} }
                                       // disabled={index >= allowedCards}
                                     />
-                                  </td>
+                                  </td> */}
                                   <td>
                                     {new Date(cards.card_date).toLocaleDateString()}
                                   </td>

@@ -87,20 +87,20 @@ const Galerie = ({id_card}) => {
                   <div style={{ float:'right',   }}>
                       <button onClick={openAddPicture} className='add-service-button'> Ajouter une image </button>
                   </div>
-                {data.length > 0 &&(
-                    <>
-                        <div className='image-gallery'>
-                            {data.map((galerie, index) => (
-                                    <div className='gallery-item' key={index}>
-                                        <img src={`http://localhost:5000/api/uploads/${galerie.image}`} alt='gallery' className='gallery-image' />
-                                        <div className='delete-icon' onClick={() => handleGalerieDelete(galerie.id)}>
-                                            <FaTrash size={20} color='#dc3545'/>
-                                        </div>
-                                    </div>
-                            ))}
+                  {data.length > 0 ? (
+                    <div className='image-gallery'>
+                      {data.map((galerie, index) => (
+                        <div className='gallery-item' key={index}>
+                          <img src={`http://localhost:5000/api/uploads/${galerie.image}`} alt='gallery' className='gallery-image' />
+                          <div className='delete-icon' onClick={() => handleGalerieDelete(galerie.id)}>
+                            <FaTrash size={20} color='#dc3545' />
+                          </div>
                         </div>
-                    </>
-                )}
+                      ))}
+                    </div>
+                  ) : (
+                    <p>Aucune image disponible</p>
+                  )}
             </div>
         </div>
         {openGallery && <ModalGallery handleGalerieChange={handleGalerieChange} handleGalerieSubmit={handleGalerieSubmit} setOpenGallery={setOpenGallery} />}

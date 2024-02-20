@@ -8,6 +8,7 @@ import Theme5 from '../../themes/Theme-5/Theme5';
 import Theme6 from '../../themes/Theme-6/Theme6';
 import { useParams } from 'react-router-dom';
 import { get } from "../../../http/api"
+import loadingData from '../../../Assets/sweetCard_logo_owncolor.png'
 
 
 const ThemeRenderer = () => {
@@ -44,12 +45,13 @@ const ThemeRenderer = () => {
     return <SelectedThemeComponent />;
   } else {
     return  <div className='choose-theme-container'>
-              <div className='choose-theme-message'>
+              <img src={loadingData} width={100} />
+              {/* <div className='choose-theme-message'>
                 Merci de choisir un thème 
               </div>
               <button className='choose-theme-button' onClick={navToDash}>
                 Retour
-              </button>
+              </button> */}
             </div>
     }
 }
